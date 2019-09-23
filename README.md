@@ -1,16 +1,26 @@
-# Syaiful
-Konek Database Mysql via Php
+#Delete PHP
 <?php
 
-$server = "localhost";
-$user = "root";
-$password = "kopi";
-$nama_database = "pendaftaran_siswa";
+include("config.php");
 
-$db = mysqli_connect($server, $user, $password, $nama_database);
+if( isset($_GET['id']) ){
 
-if( !$db ){
-    die("Gagal terhubung dengan database: " . mysqli_connect_error());
+    // ambil id dari query string
+    $id = $_GET['id'];
+
+    // buat query hapus
+    $sql = "DELETE FROM calon_siswa WHERE id=$id";
+    $query = mysqli_query($db, $sql);
+
+    // apakah query hapus berhasil?
+    if( $query ){
+        header('Location: list-siswa.php');
+    } else {
+        die("gagal menghapus...");
+    }
+
+} else {
+    die("akses dilarang...");
 }
 
 ?>
