@@ -1,5 +1,5 @@
 # Syaiful
-Konek Database
+Konek Database Mysql via Php
 <?php
 
 $server = "localhost";
